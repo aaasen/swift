@@ -14,6 +14,8 @@ func TestAST(t *testing.T) {
 
 	ast := &AST{[]*AST{arg0, arg1}, "add"}
 
+	fmt.Println(ast)
+
 	Exec(ast)
 
 	fmt.Println(ast)
