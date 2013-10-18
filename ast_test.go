@@ -6,12 +6,17 @@ import (
 )
 
 func TestAST(t *testing.T) {
-	arg1 := &AST{nil, 1}
-	arg2 := &AST{nil, 2}
-	ast := &AST{[]*AST{arg1, arg2}, "add"}
+	arg10 := &AST{nil, 1}
+	arg11 := &AST{nil, 2}
 
-	aFunc := funcs[ast.Value.(string)].(func(int, int) int)
+	arg0 := &AST{[]*AST{arg10, arg11}, "add"}
+	arg1 := &AST{nil, 3}
+	ast := &AST{[]*AST{arg0, arg1}, "add"}
 
-	fmt.Println(aFunc(ast.Children[0].Value.(int), ast.Children[1].Value.(int)))
+	fmt.Println(ast)
+
+	Exec(ast)
+
+	fmt.Println(ast)
 
 }
