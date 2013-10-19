@@ -7,9 +7,16 @@ import (
 	"strings"
 )
 
+const (
+	FUNC = iota
+	VAR
+	VAL
+)
+
 type AST struct {
 	Children []*AST
 	Value    interface{}
+	Type     int
 }
 
 func (self *AST) String() string {
