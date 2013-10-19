@@ -13,8 +13,9 @@ func TestVar(t *testing.T) {
 	addVal := &AST{nil, 1, VAL}
 	addVar := &AST{nil, "a", VAR}
 	add := &AST{[]*AST{addVal, addVar}, "add", FUNC}
+	print := &AST{[]*AST{add}, "print", FUNC}
 
-	main := &AST{[]*AST{set, add}, "main", FUNC}
+	main := &AST{[]*AST{set, print}, "main", FUNC}
 
 	fmt.Println(main)
 

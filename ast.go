@@ -36,3 +36,7 @@ func (self *AST) levelString(level int) string {
 		self.Value,
 		strings.Join(childStrings, ""))
 }
+
+func (self *AST) Remove(ast *AST) {
+
+}

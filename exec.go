@@ -1,6 +1,8 @@
 package swift
 
-import ()
+import (
+	"fmt"
+)
 
 func Exec(ast *AST, env *Environment) {
 	if ast.Children != nil {
@@ -29,9 +31,12 @@ func Exec(ast *AST, env *Environment) {
 			ast.Value = Multiply(env.Get(ast.Children[0].Value).(int),
 				env.Get(ast.Children[1].Value).(int))
 			ast.Children = nil
+		case "print":
+			fmt.Println(env.Get(ast.Children[0].Value))
+			ast.Remove(ast)
 		case "set":
 			env.Vars[ast.Children[0].Value.(string)] = ast.Children[1].Value
-			ast.Children = nil
+			ast.Remove(ast)
 		}
 	}
 }
